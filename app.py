@@ -1,12 +1,24 @@
 import streamlit as st
 import pandas as pd
 
+# --- Page Config with Logo ---
+st.set_page_config(
+    page_title="Inventra Dashboard",
+    page_icon="inventra_logo.png",  # your saved logo
+    layout="wide"
+)
+
+# --- Display Logo at Top ---
+st.image("inventra_logo.png", width=180)
+st.markdown("<h2 style='text-align: center;'>📊 Inventra Inventory & Sales Dashboard</h2>", unsafe_allow_html=True)
+st.write("---")
+
 # --- Hardcoded users (demo) ---
 USERS = {"admin": "1234", "user1": "5678"}
 
 # --- Login Function ---
 def login():
-    st.title("🔐 SmartStock Login")
+    st.title("🔐 Inventra Login")
     user_id = st.text_input("User ID")
     pin = st.text_input("PIN", type="password")
     if st.button("Login"):
@@ -145,7 +157,7 @@ def main():
         login()
         return
 
-    st.sidebar.title("Navigation")
+    st.sidebar.title("Inventra Navigation")
     st.sidebar.write(f"Logged in as: **{st.session_state['user_id']}**")
     page = st.sidebar.radio("Go to", ["Inventory", "Sales"])
 
@@ -164,3 +176,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
